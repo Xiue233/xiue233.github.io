@@ -35,11 +35,11 @@
     
     
     
-    <category term="python" scheme="https://xiue233.github.io/tags/python/"/>
+    <category term="ML" scheme="https://xiue233.github.io/tags/ML/"/>
     
     <category term="bugs" scheme="https://xiue233.github.io/tags/bugs/"/>
     
-    <category term="ML" scheme="https://xiue233.github.io/tags/ML/"/>
+    <category term="python" scheme="https://xiue233.github.io/tags/python/"/>
     
   </entry>
   
@@ -63,11 +63,11 @@
     
     
     
-    <category term="FastDeploy" scheme="https://xiue233.github.io/tags/FastDeploy/"/>
+    <category term="bugs" scheme="https://xiue233.github.io/tags/bugs/"/>
     
     <category term="python" scheme="https://xiue233.github.io/tags/python/"/>
     
-    <category term="bugs" scheme="https://xiue233.github.io/tags/bugs/"/>
+    <category term="FastDeploy" scheme="https://xiue233.github.io/tags/FastDeploy/"/>
     
   </entry>
   
