@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Linux下适配拯救者Y9000X的Optimus方案</title>
+      <link href="/2023/11/01/linux-mux-resolution-for-legion/"/>
+      <url>/2023/11/01/linux-mux-resolution-for-legion/</url>
+      
+        <content type="html"><![CDATA[<p>当年，年少无知，被引入了Arch<del>邪</del>神教，在Y9000X 2022款下，为了解决Optimus的兼容问题，一路倒腾。</p><p>注意：本文章对应的机子为Y9000X 2022 i7+3060款，在外置硬盘上安装了ArchLinux，使用的是<a href="https://github.com/Askannz/optimus-manager">Optimus-manager</a>与<code>闭源nvidia驱动</code>。参考本教程操作系统时，若造成不良后果，本人概不负责。</p><h2 id="什么是Optimus-x2F-MUX？"><a href="#什么是Optimus-x2F-MUX？" class="headerlink" title="什么是Optimus&#x2F;MUX？"></a>什么是Optimus&#x2F;MUX？</h2><p><img src="/images/muxed-introduction.jpg" alt="muxed-introduction"></p><p>Optimus&#x2F;MUX Switch可以说是一种多显卡切换方案，具体细节不再追述，请自行查阅相关资料，简单来说分为：integrated(集显模式)、hybrid(混显模式)、discrete(独显模式)。</p><p>上述模式功能如名，是与接入显卡的方式有关的。可以看上图展示的三种模式，其中Y9000X很荣幸使用了第三种Very high-end <del>low</del>的模式，在混显模式下独显会通过核显输出(与图中描述有点差异)，在独显模式下，将会屏蔽核显，直接由独显输出。</p><p>此时问题就来了，即使linux上安装了Optimus支持的软件，也会因为切换模式时的显卡变化产生问题。</p><h2 id="为什么仅安装驱动与Optimus会不完全支持"><a href="#为什么仅安装驱动与Optimus会不完全支持" class="headerlink" title="为什么仅安装驱动与Optimus会不完全支持"></a>为什么仅安装驱动与Optimus会不完全支持</h2><p>当安装了序言所提到的Optimus-manager与闭源nvidia驱动后，在混显模式及集显模式下可以正常工作，但是如果是以独显启动的话，便会卡在开机界面。</p><p>读取错误日志便可以发现问题的关键：</p><p><img src="/images/discrete-error-log.jpg" alt="discrete-error-log"></p><p>从上图中可以得到一个关键信息：<code>PCIError: Cannot find the integrated GPU. Is this an Optimus System?</code></p><p>即，此Optimus并未适配独显模式，仅支持混显或者核显模式。如果在独显模式打开，Optimus会找不到核显，而报错，导致图形界面无法正常渲染。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>作为一个定居在<del>Windows</del>SteamOS下的用户，开独显模式以提升帧率是必要的，但是，若是我再切换到Linux下工作，还要再次跳到混显模式，真的是操蛋。这能忍？于是就开启了与这个问题较劲的时间。</p><p>当时，我就在想，能不能有一个东西在开机加载模块的时候自动识别显卡情况，如果没核显的话自动切换到独显的正常支持上；如果有核显的话，就启动Optimus以支持mux方案。显然，这个东西超出了我的技术范畴，还真不会写，时间暂时告一段落，<del>气得我要掉小珍珠了</del>。</p><p>偶然在Optimus-manager的issue下发现有人也是拯救者笔记本遇到了这个问题，他下载了一个叫做System76-power的东西来解决。等等？这是什么？</p><h3 id="System76-power——解决独显模式与Optimus适配的关键稻草"><a href="#System76-power——解决独显模式与Optimus适配的关键稻草" class="headerlink" title="System76-power——解决独显模式与Optimus适配的关键稻草"></a>System76-power——解决独显模式与Optimus适配的关键稻草</h3><blockquote><p><a href="https://github.com/pop-os/system76-power">System76-power</a> is a utility for managing graphics and power profiles.</p></blockquote><p>System76-power真的是梦中工具，完美实现了我当时设想的解决方案(不如说人家做得比我想的好多了)，它会在启动的时候自动检测显卡的连接情况，自动选择Optimus方案和独显直连模式，并且完美兼容安装的Optimus-manager。</p><p>但是，又出现了一些小问题。</p><h3 id="独显模式下无法调节笔记本亮度及独显输出接口无输出"><a href="#独显模式下无法调节笔记本亮度及独显输出接口无输出" class="headerlink" title="独显模式下无法调节笔记本亮度及独显输出接口无输出"></a>独显模式下无法调节笔记本亮度及独显输出接口无输出</h3><p>在激动人心的启动后，不出意外就出意外了，笔记本的屏幕快把我的钛合金眼亮瞎了，并且调节亮度的ui很卡，实际上也无法调节亮度，并且我的外接显示器无信号输入了(接在全能type c口，且据检测hdmi口也无输出)，在xrandr中仅显示内置屏幕。</p><p>emm,此处，应该是nvidia驱动的加载问题吧？查资料找到一个解决方法就是，在&#x2F;usr&#x2F;share&#x2F;X11&#x2F;xorg.conf.d下创建一个10-nvidia.conf文件，内容如下:</p><pre><code class="conf">Section &quot;Device&quot;    Identifier &quot;Device0&quot;    Driver &quot;nvidia&quot;    VendorName &quot;NVIDIA Corporation&quot;    Option &quot;RegistryDwords&quot; &quot;EnableBrightnessControl=1&quot;    Option &quot;NoLogo&quot; &quot;True&quot;EndSection</code></pre><p>之后reboot下，便可解决调节亮度的问题和无输出的问题，缺点是：在仅核显模式下，因为强制启用了nvidia驱动，找不到nvidia又无法启动了，当然这个问题我暂未解决，至少optimus和独显模式能用了，optimus下也差不多省电吧。</p><h2 id="尾语"><a href="#尾语" class="headerlink" title="尾语"></a>尾语</h2><p>大声告诉我那几个字：</p><p><code>Arch,Yes!</code></p><p>在ArchLinux的折腾下，确实了解了诸多好玩的东西。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>随笔——中国当今社会下的原神社会现象</title>
       <link href="/2023/10/19/essay-genshin-phenomena-in-society/"/>
       <url>/2023/10/19/essay-genshin-phenomena-in-society/</url>
@@ -56,11 +75,11 @@
       
         <tags>
             
+            <tag> Aether </tag>
+            
             <tag> Android </tag>
             
             <tag> Maven </tag>
-            
-            <tag> Aether </tag>
             
         </tags>
       
@@ -79,34 +98,11 @@
       
         <tags>
             
+            <tag> Aether </tag>
+            
             <tag> Android </tag>
             
             <tag> Maven </tag>
-            
-            <tag> Aether </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>几个FastDeploy Python SDK使用问题</title>
-      <link href="/2023/03/05/fastdeploy_for_python_bug/"/>
-      <url>/2023/03/05/fastdeploy_for_python_bug/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/PaddlePaddle/FastDeploy">FastDeploy</a>是一款全场景、易用灵活、极致高效的AI推理部署工具。<del>反正他们自己这么说的。</del></p></blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近在做项目，碰巧需要使用FastDeploy的东西，就尝试了下他的python SDK，然后就有了以下的事情发生。</p><h3 id="1-样例代码错误"><a href="#1-样例代码错误" class="headerlink" title="(1)样例代码错误"></a>(1)样例代码错误</h3><p>因为FastDeploy的Python Sample太负责了，导致<code>=</code>写为了<code>-</code>，成功让我<del>混了</del>提交了一个<a href="https://github.com/PaddlePaddle/FastDeploy/pull/633">PR</a>，不再累述。  </p><p>还有一个问题是样例图片的名字和实际调用的不同，自行根据实际名字更改下就行。</p><h3 id="2-PYyaml库不兼容"><a href="#2-PYyaml库不兼容" class="headerlink" title="(2)PYyaml库不兼容"></a>(2)PYyaml库不兼容</h3><p>在他的文档里并未标明PYyaml库的版本<del>至少我没看到</del>，导致与新版PYyaml不兼容。<br>需要在<strong>ofa&#x2F;tutorial&#x2F;latency_table.py</strong>文件中，添加</p><pre><code class="python">from yaml import CLoader as Loader</code></pre><p>并在第17行处给yaml.load()加上loder参数。</p><pre><code class="python">...from yaml import CLoader as Loader...        with open(fname, &quot;r&quot;) as fp:            self.lut = yaml.load(fp,Loader=Loader)...</code></pre><p>之后，这个问题就解决了。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> FastDeploy </tag>
-            
-            <tag> python </tag>
-            
-            <tag> bugs </tag>
             
         </tags>
       
@@ -167,9 +163,32 @@
       
         <tags>
             
+            <tag> Android </tag>
+            
             <tag> skills </tag>
             
-            <tag> Android </tag>
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>几个FastDeploy Python SDK使用问题</title>
+      <link href="/1970/01/01/fastdeploy_for_python_bug/"/>
+      <url>/1970/01/01/fastdeploy_for_python_bug/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/PaddlePaddle/FastDeploy">FastDeploy</a>是一款全场景、易用灵活、极致高效的AI推理部署工具。<del>反正他们自己这么说的。</del></p></blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近在做项目，碰巧需要使用FastDeploy的东西，就尝试了下他的python SDK，然后就有了以下的事情发生。</p><h3 id="1-样例代码错误"><a href="#1-样例代码错误" class="headerlink" title="(1)样例代码错误"></a>(1)样例代码错误</h3><p>因为FastDeploy的Python Sample太负责了，导致<code>=</code>写为了<code>-</code>，成功让我<del>混了</del>提交了一个<a href="https://github.com/PaddlePaddle/FastDeploy/pull/633">PR</a>，不再累述。  </p><p>还有一个问题是样例图片的名字和实际调用的不同，自行根据实际名字更改下就行。</p><h3 id="2-PYyaml库不兼容"><a href="#2-PYyaml库不兼容" class="headerlink" title="(2)PYyaml库不兼容"></a>(2)PYyaml库不兼容</h3><p>在他的文档里并未标明PYyaml库的版本<del>至少我没看到</del>，导致与新版PYyaml不兼容。<br>需要在<strong>ofa&#x2F;tutorial&#x2F;latency_table.py</strong>文件中，添加</p><pre><code class="python">from yaml import CLoader as Loader</code></pre><p>并在第17行处给yaml.load()加上loder参数。</p><pre><code class="python">...from yaml import CLoader as Loader...        with open(fname, &quot;r&quot;) as fp:            self.lut = yaml.load(fp,Loader=Loader)...</code></pre><p>之后，这个问题就解决了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> FastDeploy </tag>
+            
+            <tag> python </tag>
+            
+            <tag> bugs </tag>
             
         </tags>
       
