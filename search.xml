@@ -4,29 +4,6 @@
   
     
     <entry>
-      <title>几个FastDeploy Python SDK使用问题</title>
-      <link href="/2024/08/02/fastdeploy_for_python_bug/"/>
-      <url>/2024/08/02/fastdeploy_for_python_bug/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/PaddlePaddle/FastDeploy">FastDeploy</a>是一款全场景、易用灵活、极致高效的AI推理部署工具。<del>反正他们自己这么说的。</del></p></blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近在做项目，碰巧需要使用FastDeploy的东西，就尝试了下他的python SDK，然后就有了以下的事情发生。</p><h3 id="1-样例代码错误"><a href="#1-样例代码错误" class="headerlink" title="(1)样例代码错误"></a>(1)样例代码错误</h3><p>因为FastDeploy的Python Sample太负责了，导致<code>=</code>写为了<code>-</code>，成功让我<del>混了</del>提交了一个<a href="https://github.com/PaddlePaddle/FastDeploy/pull/633">PR</a>，不再累述。  </p><p>还有一个问题是样例图片的名字和实际调用的不同，自行根据实际名字更改下就行。</p><h3 id="2-PYyaml库不兼容"><a href="#2-PYyaml库不兼容" class="headerlink" title="(2)PYyaml库不兼容"></a>(2)PYyaml库不兼容</h3><p>在他的文档里并未标明PYyaml库的版本<del>至少我没看到</del>，导致与新版PYyaml不兼容。<br>需要在<strong>ofa&#x2F;tutorial&#x2F;latency_table.py</strong>文件中，添加</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> yaml <span class="keyword">import</span> CLoader <span class="keyword">as</span> Loader</span><br></pre></td></tr></table></figure><p>并在第17行处给yaml.load()加上loder参数。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">from</span> yaml <span class="keyword">import</span> CLoader <span class="keyword">as</span> Loader</span><br><span class="line">...</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(fname, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">            <span class="variable language_">self</span>.lut = yaml.load(fp,Loader=Loader)</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>之后，这个问题就解决了。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> FastDeploy </tag>
-            
-            <tag> python </tag>
-            
-            <tag> bugs </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>《心中的雨，散落在了天边》(2024-7-13随笔)</title>
       <link href="/2024/07/13/2024-7-13-essay/"/>
       <url>/2024/07/13/2024-7-13-essay/</url>
@@ -159,11 +136,11 @@
       
         <tags>
             
+            <tag> Aether </tag>
+            
             <tag> Android </tag>
             
             <tag> Maven </tag>
-            
-            <tag> Aether </tag>
             
         </tags>
       
@@ -182,11 +159,11 @@
       
         <tags>
             
+            <tag> Aether </tag>
+            
             <tag> Android </tag>
             
             <tag> Maven </tag>
-            
-            <tag> Aether </tag>
             
         </tags>
       
@@ -205,11 +182,11 @@
       
         <tags>
             
-            <tag> python </tag>
+            <tag> ML </tag>
             
             <tag> bugs </tag>
             
-            <tag> ML </tag>
+            <tag> python </tag>
             
         </tags>
       
