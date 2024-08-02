@@ -1,0 +1,88 @@
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Xiue's blog</title><meta name="description" content="A lazy student loving coding, anime and Miss Hamster."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q || []).push(arguments)},i[r].l=1 * new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DPSMXB5XV1', 'https://www.googletagmanager.com/gtag/js?id=G-DPSMXB5XV1');
+ga('send', 'pageview');</script><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Xiues's Blog" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Xiue's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 全部</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/FastDeploy"><i class="tag post-item-tag">FastDeploy</i></a><a href="/tags/python"><i class="tag post-item-tag">python</i></a><a href="/tags/bugs"><i class="tag post-item-tag">bugs</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/08/02/fastdeploy_for_python_bug/">几个FastDeploy Python SDK使用问题</a></h2><time class="has-text-grey" datetime="2024-08-02T01:37:15.880Z">2024-08-02</time><p class="is-flex-grow-2 mt-2">
+FastDeploy是一款全场景、易用灵活、极致高效的AI推理部署工具。反正他们自己这么说的。
+
+前言最近在做项目，碰巧需要使用FastDeploy的东西，就尝试了下他的python SDK，然后就有了以下的事情发生。
+(1)样例代码错误因为FastDeploy的Python Sample太负责了，导致=写为了-，成功让我混了提交了一个PR，不再累述。  
+还有一个问题是样例图片的名字和实际调用的不同，自行根据实际名字更改下就行。
+(2)PYyaml库不兼容在他的文档里并未标明PYyaml库的版本至少我没看到，导致与新版PYyaml不兼容。需要在ofa&amp;#x2F;tutorial&amp;#x2F;latency_table.py文件中，添加
+1from yaml import CLoader as Loader..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/08/02/fastdeploy_for_python_bug/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E9%9A%8F%E7%AC%94"><i class="tag post-item-tag">随笔</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/07/13/2024-7-13-essay/">《心中的雨，散落在了天边》(2024-7-13随笔)</a></h2><time class="has-text-grey" datetime="2024-07-12T22:22:17.000Z">2024-07-13</time><p class="is-flex-grow-2 mt-2">
+（以此谨记，2024-7-13晨夜，梦中所想。）
+
+心中的雨，终究散落在了天边。
+雨水淅沥，是打碎了树上的花儿，飘零在地面上，还是银河伴着雨水，洒落在了人间？
+漫天的大雨，让银河敞开心扉，并不是躲在乌云重重，而是游躺在行人脚边。步步涟漪，泛起星光灿烂。
+是天边在下雨，是雨水让天边哭泣？还是行人在哭泣，是泪水让行人踟蹰？
+天边好像在哭泣，也好像并未哭泣。是谁？让雨水灰蒙了天际？让银河落在脚边？微风携缕缕雨水，缓缓而又绵长地裹挟着行人。是慈爱的母亲，是温柔的长姐，展开温暖的双臂，把你美美地，爱你地抱住。
+雨水冲刷了街道，也推搡走了路上行人，行人星星点点，如同雨水，淅淅沥沥。孤独的雨水，却并不孤独，你享受着属于自己的一份温柔。
+慢慢地雨停了，乌云散去，瓢走了地上的银河，又将它洒在天际，伴随着晨曦欲出的饱满，是一..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/07/13/2024-7-13-essay/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Android"><i class="tag post-item-tag">Android</i></a><a href="/tags/Build"><i class="tag post-item-tag">Build</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/03/26/pixel3-kernelsu-build/">为Pixel3 PixelExperience13Plus内核引入Kernelsu</a></h2><time class="has-text-grey" datetime="2024-03-26T09:57:00.000Z">2024-03-26</time><p class="is-flex-grow-2 mt-2">
+“不喜欢折腾开源项目的程序员不是好的程序员。”————我自己说的
+
+概要由于买了一个Pixel3的欧版工程机，但是奈何不是GKI设备没有现成的内核拿来刷。转遍Gayhub却没有发现一个比较满意的，遂决定自己编译一个。
+但是由于并未尝试过，同时网上的教程并不是很多，也不是很详细，导致遇到问题解决并不快，于是决定写一个博客记录一下。文章重点包含了编译流程与常见错误解决方案两大内容，为了防止内容过于耦合，本文先精简地介绍了大概的编译流程，针对常见错误的解决方案则放在其后展开。
+感谢PixelExperience的官方组，在他们的TG群内提供了相对详细的编译教程，同时把一些常见的错误也列了出来，以及安全后厨公众号写的《为Pixel3编译支持kernelsu的内核》的文章。
+编译过程中参阅的相关教程链接将会放在文章..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/03/26/pixel3-kernelsu-build/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E9%9A%8F%E7%AC%94"><i class="tag post-item-tag">随笔</i></a><a href="/tags/%E6%80%9D%E8%80%83"><i class="tag post-item-tag">思考</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/03/01/a-penny-economics/">一分钱经济学(胡言乱语)</a></h2><time class="has-text-grey" datetime="2024-03-01T15:30:00.000Z">2024-03-01</time><p class="is-flex-grow-2 mt-2">什么是一分钱经济学？
+当然所谓的一分钱经济学完全是我自己取的名字，哈哈。
+
+你是否这么幻想过：如果全世界或者全中国每个人都给你1分钱，那么你将获得千万巨款。
+又想着，如果每个人都给你1分钱，然后每个人都有享受被给予1分钱的权利，那么又变成了每个人得到巨额财富后又花出了。
+对于第一个“成功”的幻想在当今社会中的应用，我称之为一分钱经济学，即：让很多人愿意为你做出少量的经济消费后量变引起质变。
+为什么会有这种想法？你是否思考过？为什么之前会有这种“幼稚”的想法？我们不妨分析下内部的心理与经济原理。
+首先，这个想法的最终目标是取得大收益，当最终收获巨大时，才会被称为野心；
+其次，对于每一个用户来说进行这个消费行为的后果&amp;#x2F;付出是极小的，一次一分钱的支持对于极大多数人来说都是可以忽略不计的，这是支撑该想法的..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/03/01/a-penny-economics/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/images/muxed-introduction.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2023/11/01/linux-mux-resolution-for-legion/"><img class="post-cover-img js-img-fadeIn" src="/images/muxed-introduction.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Linux"><i class="tag post-item-tag">Linux</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/11/01/linux-mux-resolution-for-legion/">Linux下适配拯救者Y9000X的Optimus方案</a></h2><time class="has-text-grey" datetime="2023-11-01T13:35:03.000Z">2023-11-01</time><p class="is-flex-grow-2 mt-2">当年，年少无知，被引入了Arch邪神教，在Y9000X 2022款下，为了解决Optimus的兼容问题，一路倒腾。
+注意：本文章对应的机子为Y9000X 2022 i7+3060款，在外置硬盘上安装了ArchLinux，使用的是Optimus-manager与闭源nvidia驱动。参考本教程操作系统时，若造成不良后果，本人概不负责。
+什么是Optimus&amp;#x2F;MUX？
+Optimus&amp;#x2F;MUX Switch可以说是一种多显卡切换方案，具体细节不再追述，请自行查阅相关资料，简单来说分为：integrated(集显模式)、hybrid(混显模式)、discrete(独显模式)。
+上述模式功能如名，是与接入显卡的方式有关的。可以看上图展示的三种模式，其中Y9000X很荣幸使用了第三种Very hig..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/11/01/linux-mux-resolution-for-legion/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E9%9A%8F%E7%AC%94"><i class="tag post-item-tag">随笔</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/10/19/essay-genshin-phenomena-in-society/">随笔——中国当今社会下的原神社会现象</a></h2><time class="has-text-grey" datetime="2023-10-19T09:17:38.000Z">2023-10-19</time><p class="is-flex-grow-2 mt-2">
+“不是因为‘他’玩原神，只是因为他‘玩原神’。”
+
+原来，你也玩原神！
+作为一款“潮流游戏”，原神可谓是人尽皆知，在简中网络的抽象环境下，为什么原神脱颖而出，OP成为某一抽象形象的代言词？
+它是什么？你说得对，但是原神(Genshin Impact)是米哈游….(省略一万字)
+OP从哪里来？妈妈生的
+简中抽象的环境下，主要起因于过于逆天的原神用户，让其他人感觉到不适。
+之后，用于群体攻击，造成AOE伤害。
+在情绪挤压下，简中互联网环境存在很多情绪释放地，简称“厕所”，人有三急，该拉憋不住。
+目前，OP也是特殊的街头厕所，可以不动脑子、不具有负罪感地进行排泄，从而缓解三急。
+OP一词向什么地方发展？由前两条可以看出，OP形成历程是：
+一部分惹人厌的人 –&amp;gt; 舆论发酵 –&amp;gt; 上升至某一个群体 –&amp;..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/10/19/essay-genshin-phenomena-in-society/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Andoid"><i class="tag post-item-tag">Andoid</i></a><a href="/tags/Harmony"><i class="tag post-item-tag">Harmony</i></a><a href="/tags/PcEngine"><i class="tag post-item-tag">PcEngine</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/09/13/pc-engine-in-huawei-matepad/">平板PC引擎的研究(华为MatePad)#已咕咕咕</a></h2><time class="has-text-grey" datetime="2023-09-13T12:28:49.000Z">2023-09-13</time><p class="is-flex-grow-2 mt-2">因为里面的东西基本上都写死了，没什么可玩性，就咕咕了，感兴趣可以自己去反编译一下，学习下实现的原理。
+本文章，咕咕咕，不再完善了。
+序言因为华子的平板手写功能还算可以，在国内的平板里算是好的，价格也能接受，于是买了一个 Matepad11 2021 款。桌面上默认有一个 WPS for PC 图标，也就是所宣传的：自研PC引擎，打造PC级办公软件。打开后可以看到，是Linux下WPS的界面，在关于里面也确实写着是 WPS for Linux。
+那么PC引擎是怎么实现的呢？
+切入点要想研究它的原理，肯定是找到相关的代码实现最为靠谱。不妨简单分析一下：
+
+桌面上的图标被点击后是通过Intent调起应用，那么必定会先由Java层处理(即使是Native方法也是由JVM调起的)，既然由Java层处理，那么在Andr..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/09/13/pc-engine-in-huawei-matepad/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Android"><i class="tag post-item-tag">Android</i></a><a href="/tags/Maven"><i class="tag post-item-tag">Maven</i></a><a href="/tags/Aether"><i class="tag post-item-tag">Aether</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/09/09/aether-manual/">Aether使用指南(主体功能概述)</a></h2><time class="has-text-grey" datetime="2023-09-09T14:42:41.000Z">2023-09-09</time><p class="is-flex-grow-2 mt-2">相关文章：《Aether在Android中的适配探索》
+本文所用Aether版本为1.1.0。
+Get StartedAether作为一个具有依赖注入(Dependency Injection)设计思想的库，它的主体System只能接受所依赖工具的interface实现，所以我们在调用前需要完成所需工具类的初始化(或是指定类，由Aether进行主动实例化)。
+Aether提供了org.apache.maven.repository.internal.MavenRepositorySystemUtils工具类以方便快速配置，虽然但是，我们仍需创建一个Factory来封装完整的初始化逻辑。
+12345678910111213141516171819202122232425import org.apache.ma..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/09/09/aether-manual/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../images/aether_error_in_as.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2023/09/05/aether-in-android/"><img class="post-cover-img js-img-fadeIn" src="/../images/aether_error_in_as.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Android"><i class="tag post-item-tag">Android</i></a><a href="/tags/Maven"><i class="tag post-item-tag">Maven</i></a><a href="/tags/Aether"><i class="tag post-item-tag">Aether</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/09/05/aether-in-android/">Aether在Android中的适配探索</a></h2><time class="has-text-grey" datetime="2023-09-05T15:35:45.000Z">2023-09-05</time><p class="is-flex-grow-2 mt-2">相关文章：《Aether使用指南(主体功能概述)》
+本文章为针对一年前技术探索的回想与记录，因时间跨度过大，有部分实现细节已经遗忘，望谅解。
+因为篇幅原因，本文只做Aether的简单介绍以及在Android下的兼容开发过程，Aether的使用以及针对Gradle Dependency Conflict Resolution的适配见后续文章。
+
+Aether is a library for working with artifact repositories. Aether deals with the specification of local repository, remote repository, developer workspaces, artifact transports, and ar..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/09/05/aether-in-android/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/python"><i class="tag post-item-tag">python</i></a><a href="/tags/bugs"><i class="tag post-item-tag">bugs</i></a><a href="/tags/ML"><i class="tag post-item-tag">ML</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/12/04/ofa_bugs/">OFA使用下遇到的问题</a></h2><time class="has-text-grey" datetime="2022-12-04T02:18:53.000Z">2022-12-04</time><p class="is-flex-grow-2 mt-2">
+OFAOFA样例
+
+又是瞎折腾的一天…  
+一、Linux下搭建按照要求搭建即可，没啥特殊的情况，注意把需要的库下载完整。  
+但是我的Linux因为种种原因挂不上N卡，我就换Windows了。
+二、Windows下搭建(1) torch.cuda.is_available()为False需要安装Nvidia Toolkit,并且安装特定版本的torch即可。
+(2) 运行时报错，报错中显示让使用freeze_support()1234567891011RuntimeError:         An attempt has been made to start a new process before the        current process has finished its bootstr..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/12/04/ofa_bugs/">更多</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">十二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">2</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Xiue233"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Xiue 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>

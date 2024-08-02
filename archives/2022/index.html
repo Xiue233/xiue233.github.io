@@ -1,0 +1,54 @@
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Xiue's blog</title><meta name="description" content="A lazy student loving coding, anime and Miss Hamster."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q || []).push(arguments)},i[r].l=1 * new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DPSMXB5XV1', 'https://www.googletagmanager.com/gtag/js?id=G-DPSMXB5XV1');
+ga('send', 'pageview');</script><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Xiues's Blog" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Xiue's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 2022</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/python"><i class="tag post-item-tag">python</i></a><a href="/tags/bugs"><i class="tag post-item-tag">bugs</i></a><a href="/tags/ML"><i class="tag post-item-tag">ML</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/12/04/ofa_bugs/">OFA使用下遇到的问题</a></h2><time class="has-text-grey" datetime="2022-12-04T02:18:53.000Z">2022-12-04</time><p class="is-flex-grow-2 mt-2">
+OFAOFA样例
+
+又是瞎折腾的一天…  
+一、Linux下搭建按照要求搭建即可，没啥特殊的情况，注意把需要的库下载完整。  
+但是我的Linux因为种种原因挂不上N卡，我就换Windows了。
+二、Windows下搭建(1) torch.cuda.is_available()为False需要安装Nvidia Toolkit,并且安装特定版本的torch即可。
+(2) 运行时报错，报错中显示让使用freeze_support()1234567891011RuntimeError:         An attempt has been made to start a new process before the        current process has finished its bootstr..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/12/04/ofa_bugs/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/os"><i class="tag post-item-tag">os</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/10/25/os_knowledge/">PC小芝士</a></h2><time class="has-text-grey" datetime="2022-10-25T10:33:30.000Z">2022-10-25</time><p class="is-flex-grow-2 mt-2">
+记录下对于PC boot的学习
+
+一、BIOS(摘记)
+摘自:Bios到底是什么？——知乎
+
+(1) BIOS概念BlOS（Basic Input Output System）从字义上称为“基本输出输入系统”，专门负责系统硬件各种参数设定，本质上是“程序”，也就是一组“代码”。
+BIOS程序是用汇编语言编写，通电后，BIOS首先连接到南桥(ESB)，然后是北桥(MCH)，最后连接CPU。
+(2) BIOS芯片概念BIOS芯片，特指存储BIOS程序的一块ROM芯片。
+ROM芯片本质是一个储存器，是主板上快闪EEPROM内存模块板中的长方形或正方形芯片，可以存储BIOS程序，也可以存储其它程序、代码。
+
+EEPROM (Electrically Erasable Programmable read only ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/10/25/os_knowledge/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Android"><i class="tag post-item-tag">Android</i></a><a href="/tags/skills"><i class="tag post-item-tag">skills</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/10/01/compile_mediapipe/">记一次编译Mediapipe</a></h2><time class="has-text-grey" datetime="2022-10-01T14:24:51.000Z">2022-10-01</time><p class="is-flex-grow-2 mt-2">
+Mediapipe作为一个可以跨平台的流视频处理库，也兼容了安卓的使用(毕竟亲爹是Google)。为了在安卓里使用Mediapipe需要使用bazel将mediapipe的编译为aar，来使用。
+
+环境要求
+Linux系统(部分配置需要sh完成，为了便利，不推荐使用windows编译)
+bazel编译器(用于编译)
+adb(需不需要无所谓，是便于之后bazel打包apk后，直接install)
+OpenCV
+JDK
+python
+
+配置环境(1)配置依赖环境配置依赖环境
+1sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install -y build-essential git python zip adb openjdk-8-jdk
+
+
+注意:指定python可..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/10/01/compile_mediapipe/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">十二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">2</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Xiue233"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Xiue 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>
