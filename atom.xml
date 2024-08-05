@@ -6,7 +6,7 @@
   <link href="https://xiue233.github.io/atom.xml" rel="self"/>
   
   <link href="https://xiue233.github.io/"/>
-  <updated>2024-08-04T12:57:01.654Z</updated>
+  <updated>2024-08-05T08:53:43.165Z</updated>
   <id>https://xiue233.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>First Love Story</title>
+    <link href="https://xiue233.github.io/2024/08/05/first-love-story/"/>
+    <id>https://xiue233.github.io/2024/08/05/first-love-story/</id>
+    <published>2024-08-05T08:05:21.000Z</published>
+    <updated>2024-08-05T08:53:43.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>蝉鸣依旧，夏日炎长。</p><p>怡人的早晨，慵散于梦乡。</p><p>放纵那空气中弥漫着的鸟语，任凭花香拂过躯体。</p><p>无人知晓的早晨，惬意地拥抱着整个春朝，即使夏时已至。</p><p>梦，过于绵长，过于芬芳，望向逝去的春日，却险些错过盛夏。</p><p>回首而去，差许立秋。</p><p>远方的姑娘，望着她走过了整段春日。</p><p>河对岸的姑娘，与你，却不曾停歇，相向而行，相逢而过。</p><p>擦身之别，已入夏至，回首过往，便欲立秋。</p><p>那日芬芳扑鼻，循着朵朵桃花，惊鸿一瞥，忽见枝头女子笑颜生姹紫嫣红。</p><p>一笑醉四方，追日去，忘却身疲力竭，不知止。</p><p>饮断西湖泪，吃尽桃花林，力尽不知休，肠断方思敛。</p><p>鹊桥已去，何人涉足渡银河？</p><p>桃花亦谢，痴人说梦等春秋。</p><p>春朝已去，夏日绵长，秋收硕果，冬去春归。</p><p>亦已焉哉。天命至此，人事何为？</p><p>这年夏日，终于为爱之诗，写满了第一个篇章。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;蝉鸣依旧，夏日炎长。&lt;/p&gt;
+&lt;p&gt;怡人的早晨，慵散于梦乡。&lt;/p&gt;
+&lt;p&gt;放纵那空气中弥漫着的鸟语，任凭花香拂过躯体。&lt;/p&gt;
+&lt;p&gt;无人知晓的早晨，惬意地拥抱着整个春朝，即使夏时已至。&lt;/p&gt;
+&lt;p&gt;梦，过于绵长，过于芬芳，望向逝去的春日，却险些错过盛夏。&lt;/p&gt;
+&lt;p</summary>
+      
+    
+    
+    
+    
+    <category term="随笔" scheme="https://xiue233.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux下Conda遇到OpenSSL 3.0 Legacy错误</title>
