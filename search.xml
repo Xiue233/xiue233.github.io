@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Linux下适配拯救者Y9000X的Optimus方案</title>
+      <link href="/2024/08/27/linux-mux-resolution-for-legion/"/>
+      <url>/2024/08/27/linux-mux-resolution-for-legion/</url>
+      
+        <content type="html"><![CDATA[<p><strong>Tips：于2024-8-25基于新的情况又修改了一个版本，上一个版本由于未能深入研究与思考，存在很多问题。</strong></p><p>当年，年少无知，被引入了Arch<del>邪</del>神教，在Y9000X 2022款下，为了解决Optimus的兼容问题，一路倒腾。</p><p>注意：本文章对应的机子为Y9000X 2022 i7+3060款，在外置硬盘上安装了ArchLinux，使用的是<a href="https://github.com/Askannz/optimus-manager">Optimus-manager</a>与<code>闭源nvidia驱动</code>。参考本教程操作系统时，若造成不良后果，本人概不负责。</p><h2 id="什么是MUX？"><a href="#什么是MUX？" class="headerlink" title="什么是MUX？"></a>什么是MUX？</h2><p><img src="/images/muxed-introduction.jpg" alt="muxed-introduction"></p><blockquote><p>笔记本中的MUX（多路复用器）是一种硬件组件，它的主要作用是选择和切换不同的视频输出信号源。很多现代笔记本电脑都有两个图形处理器（GPU）：一个是集成在处理器中的低功耗集成显卡，另一个是独立的高性能显卡。MUX可以帮助用户在集成显卡和独立显卡之间切换，从而根据需要在节能和性能之间进行平衡。</p></blockquote><p>MUX Switch可以说是一种多显卡切换方案，具体细节不再追述，请自行查阅相关资料，简单来说分为：integrated(集显模式)、hybrid(混显模式)、discrete(独显模式)。</p><p>上述模式功能如名，是与接入显卡的方式有关的。可以看上图展示的三种模式，其中Y9000X很荣幸使用了第三种Very high-end <del>low</del>的模式，在混显模式下独显会通过核显输出(与图中描述有点差异)，在独显模式下，将会屏蔽核显，直接由独显输出。</p><h2 id="针对Mux的适配方案"><a href="#针对Mux的适配方案" class="headerlink" title="针对Mux的适配方案"></a>针对Mux的适配方案</h2><blockquote><p>Optimus Manager 是一款在 Linux 系统中管理双显卡切换的软件，主要针对带有 NVIDIA Optimus 技术的笔记本电脑。Optimus 是 NVIDIA 提供的一项技术，用于在集成显卡（通常是 Intel GPU）和独立显卡（NVIDIA GPU）之间自动切换，以便在性能和电池续航之间取得平衡。</p></blockquote><p>正常情况下，你只需要安装<code>optimus-manager</code>即可，但是如果你需要能够同时支持独显与混显，那么还是需要配置一下。</p><p>Optimus Manger会根据配置文件，在开机时自动配置显示模式。但是，在集显模式下，它由于没有识别到集显，认为这是一个非支持Mux的机子，故直接报错且不生成相关的显示配置文件，这就导致了无法找到画面输出窗口和输出卡。</p><p>针对X11来说，可以在<code>/etc/X11/xorg.conf.d/</code>下创建一个<code>30-nvidia.conf</code>，内容如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs conf">Section &quot;Device&quot;<br>        Identifier &quot;nvidia&quot;<br>        Driver &quot;nvidia&quot;<br>        BusID &quot;PCI:1:0:0&quot; # 一般是1:0:0,根据自己的实际情况来<br>        Option &quot;AllowEmptyInitialConfiguration&quot;<br>EndSection<br><br>Section &quot;ServerLayout&quot;<br>        Identifier &quot;layout&quot;<br>        Screen 0 &quot;nvidia&quot;<br>        Option &quot;AllowNVIDIAGPUScreens&quot;<br>EndSection<br><br>Section &quot;Screen&quot;<br>        Identifier &quot;nvidia&quot;<br>        Device &quot;nvidia&quot;<br>EndSection<br><br></code></pre></td></tr></table></figure><p>这样就可以在Optimus Manager无效的情况下，也能选择这一个次优先配置文件，加载相应的显示配置。</p><p><strong>建议自行查找资料，学习Linux桌面环境是如何从查找输出设备、屏幕到输出这个过程的。</strong></p><h2 id="尾语"><a href="#尾语" class="headerlink" title="尾语"></a>尾语</h2><p>从最开始的22年还是23年捣鼓这个事情，到现在又捣鼓了几个星期，确实了解到了不少东西。</p><p>尤其是，在Linux环境下修复Bug是一个具有逻辑、挑战以及意义的事情，你想要修复一个看似是显卡加载带来的问题，实际上也会遇到显示流程带来的问题。因此，连贯、系统、有逻辑分析与思考地认识问题，从问题中不断的研究与学习我觉得是必要的。</p><p>最开始的解决方案也是歪打正着，实际上也是创建了一个备用的配置文件，在Optimus Manager不能生成配置文件时启用了，但是当时把整个的错误原因怪罪于Optimus Manager。</p><p>捣鼓Linux尤其是像Arch这种稍微折腾一点的，确实是一件浪费时间的事情，但是他真的单纯是浪费吗？</p><p>在Windows下，如果遇到了一个问题，不断的查日志、查官方的资料，即使你最后找到了问题的根因，也不一定能够动手去解决这个问题，最终可能是要等官方推送新的补丁，或者说根本解决不了。</p><p>能力越大责任越大，在Linux下，挑战与机遇并存，在一次次的解决与尝试中，就像魂类游戏在一次次的死亡中研究对手招式一样不断的积累与突破自我，最后打败对手的那一刻，饱含了无数次死亡蕴含的不甘、激情与兴奋。敌愈强，吾愈强。</p><blockquote><h2 id="踏上取经之路，比达到灵山更重要。"><a href="#踏上取经之路，比达到灵山更重要。" class="headerlink" title="踏上取经之路，比达到灵山更重要。"></a>踏上取经之路，比达到灵山更重要。</h2></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>配置VSCode以开发安卓内核</title>
       <link href="/2024/08/13/vscode-config-for-android-kernel/"/>
       <url>/2024/08/13/vscode-config-for-android-kernel/</url>
@@ -141,25 +160,6 @@
             <tag> 随笔 </tag>
             
             <tag> 思考 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux下适配拯救者Y9000X的Optimus方案</title>
-      <link href="/2023/11/01/linux-mux-resolution-for-legion/"/>
-      <url>/2023/11/01/linux-mux-resolution-for-legion/</url>
-      
-        <content type="html"><![CDATA[<p>当年，年少无知，被引入了Arch<del>邪</del>神教，在Y9000X 2022款下，为了解决Optimus的兼容问题，一路倒腾。</p><p>注意：本文章对应的机子为Y9000X 2022 i7+3060款，在外置硬盘上安装了ArchLinux，使用的是<a href="https://github.com/Askannz/optimus-manager">Optimus-manager</a>与<code>闭源nvidia驱动</code>。参考本教程操作系统时，若造成不良后果，本人概不负责。</p><h2 id="什么是Optimus-MUX？"><a href="#什么是Optimus-MUX？" class="headerlink" title="什么是Optimus&#x2F;MUX？"></a>什么是Optimus&#x2F;MUX？</h2><p><img src="/images/muxed-introduction.jpg" alt="muxed-introduction"></p><p>Optimus&#x2F;MUX Switch可以说是一种多显卡切换方案，具体细节不再追述，请自行查阅相关资料，简单来说分为：integrated(集显模式)、hybrid(混显模式)、discrete(独显模式)。</p><p>上述模式功能如名，是与接入显卡的方式有关的。可以看上图展示的三种模式，其中Y9000X很荣幸使用了第三种Very high-end <del>low</del>的模式，在混显模式下独显会通过核显输出(与图中描述有点差异)，在独显模式下，将会屏蔽核显，直接由独显输出。</p><p>此时问题就来了，即使linux上安装了Optimus支持的软件，也会因为切换模式时的显卡变化产生问题。</p><h2 id="为什么仅安装驱动与Optimus会不完全支持"><a href="#为什么仅安装驱动与Optimus会不完全支持" class="headerlink" title="为什么仅安装驱动与Optimus会不完全支持"></a>为什么仅安装驱动与Optimus会不完全支持</h2><p>当安装了序言所提到的Optimus-manager与闭源nvidia驱动后，在混显模式及集显模式下可以正常工作，但是如果是以独显启动的话，便会卡在开机界面。</p><p>读取错误日志便可以发现问题的关键：</p><p><img src="/images/discrete-error-log.jpg" alt="discrete-error-log"></p><p>从上图中可以得到一个关键信息：<code>PCIError: Cannot find the integrated GPU. Is this an Optimus System?</code></p><p>即，此Optimus并未适配独显模式，仅支持混显或者核显模式。如果在独显模式打开，Optimus会找不到核显，而报错，导致图形界面无法正常渲染。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>作为一个定居在<del>Windows</del>SteamOS下的用户，开独显模式以提升帧率是必要的，但是，若是我再切换到Linux下工作，还要再次跳到混显模式，真的是操蛋。这能忍？于是就开启了与这个问题较劲的时间。</p><p>当时，我就在想，能不能有一个东西在开机加载模块的时候自动识别显卡情况，如果没核显的话自动切换到独显的正常支持上；如果有核显的话，就启动Optimus以支持mux方案。显然，这个东西超出了我的技术范畴，还真不会写，时间暂时告一段落，<del>气得我要掉小珍珠了</del>。</p><p>偶然在Optimus-manager的issue下发现有人也是拯救者笔记本遇到了这个问题，他下载了一个叫做System76-power的东西来解决。等等？这是什么？</p><h3 id="System76-power——解决独显模式与Optimus适配的关键稻草"><a href="#System76-power——解决独显模式与Optimus适配的关键稻草" class="headerlink" title="System76-power——解决独显模式与Optimus适配的关键稻草"></a>System76-power——解决独显模式与Optimus适配的关键稻草</h3><blockquote><p><a href="https://github.com/pop-os/system76-power">System76-power</a> is a utility for managing graphics and power profiles.</p></blockquote><p>System76-power真的是梦中工具，完美实现了我当时设想的解决方案(不如说人家做得比我想的好多了)，它会在启动的时候自动检测显卡的连接情况，自动选择Optimus方案和独显直连模式，并且完美兼容安装的Optimus-manager。</p><p>但是，又出现了一些小问题。</p><h3 id="独显模式下无法调节笔记本亮度及独显输出接口无输出"><a href="#独显模式下无法调节笔记本亮度及独显输出接口无输出" class="headerlink" title="独显模式下无法调节笔记本亮度及独显输出接口无输出"></a>独显模式下无法调节笔记本亮度及独显输出接口无输出</h3><p>在激动人心的启动后，不出意外就出意外了，笔记本的屏幕快把我的钛合金眼亮瞎了，并且调节亮度的ui很卡，实际上也无法调节亮度，并且我的外接显示器无信号输入了(接在全能type c口，且据检测hdmi口也无输出)，在xrandr中仅显示内置屏幕。</p><p>emm,此处，应该是nvidia驱动的加载问题吧？查资料找到一个解决方法就是，在&#x2F;usr&#x2F;share&#x2F;X11&#x2F;xorg.conf.d下创建一个10-nvidia.conf文件，内容如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs conf">Section &quot;Device&quot;<br>    Identifier &quot;Device0&quot;<br>    Driver &quot;nvidia&quot;<br>    VendorName &quot;NVIDIA Corporation&quot;<br>    Option &quot;RegistryDwords&quot; &quot;EnableBrightnessControl=1&quot;<br>    Option &quot;NoLogo&quot; &quot;True&quot;<br>EndSection<br></code></pre></td></tr></table></figure><p>之后reboot下，便可解决调节亮度的问题和无输出的问题，缺点是：在仅核显模式下，因为强制启用了nvidia驱动，找不到nvidia又无法启动了，当然这个问题我暂未解决，至少optimus和独显模式能用了，optimus下也差不多省电吧。</p><h2 id="尾语"><a href="#尾语" class="headerlink" title="尾语"></a>尾语</h2><p>大声告诉我那几个字：</p><p><code>Arch,Yes!</code></p><p>在ArchLinux的折腾下，确实了解了诸多好玩的东西。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
             
         </tags>
       
