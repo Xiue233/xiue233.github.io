@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="xiue,coding">
+    
+    <meta name="author" content="xiue233">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://xiue233.github.io/2022/10/25/os_knowledge/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Love code, anime and u.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PC小芝士">
+<meta property="og:url" content="https://xiue233.github.io/2022/10/25/os_knowledge/index.html">
+<meta property="og:site_name" content="Xiue&#39;s Blog">
+<meta property="og:description" content="Love code, anime and u.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiue233.github.io/images/wallpaper.png">
+<meta property="article:published_time" content="2022-10-25T10:33:30.000Z">
+<meta property="article:modified_time" content="2025-03-16T13:27:42.834Z">
+<meta property="article:author" content="Xiue">
+<meta property="article:tag" content="os">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiue233.github.io/images/wallpaper.png">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-DPSMXB5XV1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DPSMXB5XV1');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            PC小芝士 | Xiue233&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"xiue233.github.io","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"github-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/wallpaper.png","description":"Love code, anime and u."},"google_analytics":{"enable":true,"id":"G-DPSMXB5XV1"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallpaper.png","dark":"/images/wallpaper.png"},"title":"Xiue233's Blog","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/xiue233","instagram":null,"zhihu":null,"twitter":null,"email":"xiue233@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":null},"Tags":{"path":"/tags","icon":null},"Categories":{"path":"/categories","icon":null}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/3/17 08:00:00"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/avatar.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Xiue233&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>Archives</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">PC小芝士</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/avatar.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">xiue233</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2022-10-25 18:33:30</span>
+        <span class="mobile">2022-10-25 18:33:30</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-16 21:27:42</span>
+            <span class="mobile">2025-03-16 21:27:42</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/os/">os</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<blockquote>
+<p>记录下对于PC boot的学习</p>
+</blockquote>
+<h2 id="一、BIOS-摘记"><a href="#一、BIOS-摘记" class="headerlink" title="一、BIOS(摘记)"></a><strong>一、BIOS(摘记)</strong></h2><blockquote>
+<p>摘自:<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89058949" >Bios到底是什么？——知乎<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<h3 id="1-BIOS概念"><a href="#1-BIOS概念" class="headerlink" title="(1) BIOS概念"></a>(1) BIOS概念</h3><p>BlOS（Basic Input Output System）从字义上称为“基本输出输入系统”，专门负责系统硬件各种参数设定，本质上是“程序”，也就是一组“代码”。</p>
+<p>BIOS程序是用汇编语言编写，通电后，BIOS首先连接到南桥(ESB)，然后是北桥(MCH)，最后连接CPU。</p>
+<h3 id="2-BIOS芯片概念"><a href="#2-BIOS芯片概念" class="headerlink" title="(2) BIOS芯片概念"></a>(2) BIOS芯片概念</h3><p>BIOS芯片，特指存储BIOS程序的一块ROM芯片。</p>
+<p>ROM芯片本质是一个储存器，是主板上快闪EEPROM内存模块板中的长方形或正方形芯片，可以存储BIOS程序，也可以存储其它程序、代码。</p>
+<blockquote>
+<p>EEPROM (Electrically Erasable Programmable read only memory)是指带电可擦可编程只读存储器。是一种掉电后数据不丢失的存储芯片。 EEPROM 可以在电脑上或专用设备上擦除已有信息，重新编程。一般用在即插即用。</p>
+</blockquote>
+<h3 id="3-BIOS的作用"><a href="#3-BIOS的作用" class="headerlink" title="(3) BIOS的作用"></a>(3) BIOS的作用</h3><p>作为计算机开机之后，运行的第一个程序。</p>
+<p>带领CPU识别主板上的重要硬件和集成元件，如硬盘、显卡、声卡以及各种接口，然后按照预设顺序读取存储器上操作系统的引导文件，通过设置的启动模式找到引导分区装载操作系统。</p>
+<p>顺利引导操作系统之后，BIOS功成身退、隐于后台。</p>
+<h3 id="4-BIOS的加载顺序"><a href="#4-BIOS的加载顺序" class="headerlink" title="(4) BIOS的加载顺序"></a>(4) BIOS的加载顺序</h3><p>BIOS程序是用汇编语言编写，通电后，BIOS首先连接到南桥(ESB)，然后是北桥(MCH)，最后连接CPU。</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://tech.sina.com.cn/h/2008-02-26/0600586034.shtml" >英特尔主流服务器芯片组技术对比分析<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>英特尔的北桥芯片被称为Chipset Memory Controller Hub (MCH)，主板的北桥芯片组决定主板可以支持的CPU种类、前端总线频率、内存规格和容量等等，并且北桥芯片是处理器和高速设备的联系纽带，包括内存、高速PCI Express等设备的总线就是构架于北桥之上。<br>主板南桥芯片组决定着支持的扩展插槽和扩展接口的种类和数量，并且负责完成相对低速的系统设备的连接，如USB2.0接口、SATA接口、PCI-E x4、PCI-x、低速的PCI等等，同时，南桥芯片集成电源管理功能，也可以集成音频芯片如AC’97，节省系统成本。</p>
+</blockquote>
+<h3 id="5-BIOS芯片内储存的程序段"><a href="#5-BIOS芯片内储存的程序段" class="headerlink" title="(5) BIOS芯片内储存的程序段"></a>(5) BIOS芯片内储存的程序段</h3><ol>
+<li><strong>自诊断程序</strong><br>通过读取CMOSRAM中的内容，识别硬件配置，并对其进行自检和初始化。  </li>
+<li><strong>CMOS设置程序</strong><br>引导过程中，用特殊热键启动，进行设置后，存入CMOS RAM中。  </li>
+<li><strong>系统自检装载程序</strong><br>在自检成功后，将磁盘0磁道0扇区上的引导程序装入内存，运行加载操作系统。</li>
+<li><strong>主要l&#x2F;0设备驱动程序和中断服务</strong></li>
+</ol>
+<h2 id="二、UEFI"><a href="#二、UEFI" class="headerlink" title="二、UEFI"></a><strong>二、UEFI</strong></h2><blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BB%9F%E4%B8%80%E5%8F%AF%E6%89%A9%E5%B1%95%E5%9B%BA%E4%BB%B6%E6%8E%A5%E5%8F%A3/22786233?fromtitle=UEFI&fromid=3556240&fr=aladdin" >统一可扩展固件接口（英语：Unified Extensible Firmware Interface，缩写UEFI）是一种个人电脑系统规格，用来定义操作系统与系统固件之间的软件界面，作为BIOS的替代方案。可扩展固件接口负责加电自检（POST）、联系操作系统以及提供连接操作系统与硬件的接口<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<h3 id="1-概念与特点"><a href="#1-概念与特点" class="headerlink" title="(1) 概念与特点"></a>(1) 概念与特点</h3><p>UEFI可以认为是BIOS的升级版，不仅有UI界面，并且容错和纠错特性也更强。</p>
+<p>相比于传统的BIOS，UEFI加入了对新硬件的支持，其中就有支持2TB以上硬盘。</p>
+<p><strong>Tips:</strong> UEFI应该使用FAT32分区格式。</p>
+<h3 id="2-兼容性"><a href="#2-兼容性" class="headerlink" title="(2) 兼容性"></a>(2) 兼容性</h3><p>可以把UEFI设置成Legacy模式（传统模式）让其支持传统MBR启动，效果同BIOS+MBR。</p>
+<h2 id="三、MBR与GPT"><a href="#三、MBR与GPT" class="headerlink" title="三、MBR与GPT"></a><strong>三、MBR与GPT</strong></h2><h3 id="1-MBR"><a href="#1-MBR" class="headerlink" title="(1) MBR"></a>(1) MBR</h3><blockquote>
+<p>主引导记录（MBR，Master Boot Record）是采用MBR分区表的硬盘的第一个扇区，即C&#x2F;H&#x2F;S地址的0柱面0磁头1扇区，也叫做MBR扇区。<br>在深入讨论主引导扇区内部结构的时候，有时也将其开头的446字节内容特指为“主引导记录”（MBR），其后是4个16字节的“磁盘分区表”（DPT），以及2字节的结束标志（55AA）。因此，在使用“主引导记录”（MBR）这个术语的时候，需要根据具体情况判断其到底是指整个主引导扇区，还是主引导扇区的前446字节。</p>
+</blockquote>
+<p>MBR(Master Boot Record)是传统的分区表类型，当电脑启动时，会先启动BIOS，BIOS再从硬盘上读取MBR主引导记录，硬盘上的MBR读取后，就会启动操作系统，但最大的缺点则是不支持容量大于2T的硬盘。</p>
+<h3 id="2-GPT"><a href="#2-GPT" class="headerlink" title="(2) GPT"></a>(2) GPT</h3><blockquote>
+<p>全局唯一标识分区表（GUID Partition Table，缩写：GPT）是指全局唯一标示磁盘分区表格式。它是可扩展固件接口（EFI）标准（被Intel用于替代个人计算机的BIOS）的一部分，被用于替代BIOS系统中的以32bits来存储逻辑块地址和大小信息的主引导记录（MBR）分区表。<br>对于那些扇区为512字节的磁盘，MBR分区表不支持容量大于2.2TB（2.2 ×1012字节）的分区，然而，一些硬盘制造商（诸如希捷和西部数据）注意到这个局限性，并且将他们的容量较大的磁盘升级到4KB的扇区，这意味着MBR的有效容量上限提升到16 TiB。<br>这个看似“正确的”解决方案，在临时地降低人们对改进磁盘分配表的需求的同时，也给市场带来关于在有较大的块(block)的设备上从BIOS启动时，如何最佳的划分磁盘分区的困惑。GPT分配64bits给逻辑块地址，因而使得最大分区大小在264-1个扇区成为可能。对于每个扇区大小为512字节的磁盘，那意味着可以有9.4ZB(9.4×1012字节)或8 ZiB 个512字节（9,444,732,965,739,290,426,880字节或 18,446,744,073,709,551,615（264-1）个扇区×512（29）字节每扇区）。</p>
+</blockquote>
+<p>GPT是另一种更先进的磁盘系统分区方式，它的出现弥补了MBR这个缺点，最大支持18EB的硬盘，是基于UEFI使用的磁盘分区架构。</p>
+<h2 id="四、GRUB"><a href="#四、GRUB" class="headerlink" title="四、GRUB"></a><strong>四、GRUB</strong></h2><blockquote>
+<p>GNU GRUB（GRand Unified Bootloader简称“GRUB”）是一个来自GNU项目的多操作系统启动程序。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择操作系统分区上的不同内核，也可用于向这些内核传递启动参数。  </p>
+</blockquote>
+<p>GRUB（GRand unified bootloader），多操作系统启动程序。它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。  </p>
+<p>GRUB可用于选择操作系统分区上的不同内核，也可用于向这些内核传递启动参数。它是一个多重操作系统启动管理器，用来引导不同系统，如Windows、Linux。Linux常见的引导程序包括LILO、GRUB、GRUB2。如下图所示为GRUB加载引导流程。  </p>
+<p>Centos 7 默认使用GRUB2引导系统启动,GRUB2 是基于 GRUB 开发成更加安全强大的多系统引导程序，最新Linux发行版都是使用GRUB2作为引导程序。同时GRUB2采用了模块化设计，使得GRUB2核心更加精炼，使用更加灵活，同时也就不需要像GRUB分为 stage 1、stage 1.5、stage 2三个阶段。</p>
+<blockquote>
+<p>摘自<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/xhtchina/article/details/113789538" >BIOS, UEFI, MBR, GPT, GRUB介绍<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> PC小芝士</li>
+        <li><strong>作者:</strong> xiue233</li>
+        <li><strong>创建于
+                :</strong> 2022-10-25 18:33:30</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2025-03-16 21:27:42
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://xiue233.github.io/2022/10/25/os_knowledge/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/os/">#os</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2022/12/04/ofa_bugs/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">OFA使用下遇到的问题</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2022/10/01/compile_mediapipe/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">记一次编译Mediapipe</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">PC小芝士</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81BIOS-%E6%91%98%E8%AE%B0"><span class="nav-text">一、BIOS(摘记)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-BIOS%E6%A6%82%E5%BF%B5"><span class="nav-text">(1) BIOS概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-BIOS%E8%8A%AF%E7%89%87%E6%A6%82%E5%BF%B5"><span class="nav-text">(2) BIOS芯片概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-BIOS%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-text">(3) BIOS的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-BIOS%E7%9A%84%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F"><span class="nav-text">(4) BIOS的加载顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-BIOS%E8%8A%AF%E7%89%87%E5%86%85%E5%82%A8%E5%AD%98%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%AE%B5"><span class="nav-text">(5) BIOS芯片内储存的程序段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81UEFI"><span class="nav-text">二、UEFI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="nav-text">(1) 概念与特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="nav-text">(2) 兼容性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81MBR%E4%B8%8EGPT"><span class="nav-text">三、MBR与GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MBR"><span class="nav-text">(1) MBR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GPT"><span class="nav-text">(2) GPT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81GRUB"><span class="nav-text">四、GRUB</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">xiue233</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 16 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

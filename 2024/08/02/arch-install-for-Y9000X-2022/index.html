@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="xiue,coding">
+    
+    <meta name="author" content="xiue233">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://xiue233.github.io/2024/08/02/arch-install-for-y9000x-2022/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Love code, anime and u.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为Y9000X安装Arch">
+<meta property="og:url" content="https://xiue233.github.io/2024/08/02/arch-install-for-Y9000X-2022/index.html">
+<meta property="og:site_name" content="Xiue&#39;s Blog">
+<meta property="og:description" content="Love code, anime and u.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiue233.github.io/images/wallpaper.png">
+<meta property="article:published_time" content="2024-08-02T02:02:14.000Z">
+<meta property="article:modified_time" content="2025-03-16T13:27:42.729Z">
+<meta property="article:author" content="Xiue">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Arch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiue233.github.io/images/wallpaper.png">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-DPSMXB5XV1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DPSMXB5XV1');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            为Y9000X安装Arch | Xiue233&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"xiue233.github.io","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"github-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/wallpaper.png","description":"Love code, anime and u."},"google_analytics":{"enable":true,"id":"G-DPSMXB5XV1"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallpaper.png","dark":"/images/wallpaper.png"},"title":"Xiue233's Blog","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/xiue233","instagram":null,"zhihu":null,"twitter":null,"email":"xiue233@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":null},"Tags":{"path":"/tags","icon":null},"Categories":{"path":"/categories","icon":null}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/3/17 08:00:00"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/avatar.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Xiue233&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>Archives</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">为Y9000X安装Arch</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/avatar.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">xiue233</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-08-02 10:02:14</span>
+        <span class="mobile">2024-08-02 10:02:14</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-16 21:27:42</span>
+            <span class="mobile">2025-03-16 21:27:42</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Arch/">Arch</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<blockquote>
+<p>春天，又到了程序员和ArchLinux交尾的时间。</p>
+</blockquote>
+<p>原因是这样的，因为傻逼Win11各种奇奇怪怪的Bug、卡顿并且在移动办公过程中耗电量惊人，所以不得不把原本装在移动硬盘里的<del>学习版</del>Arch给迁移到内置硬盘内。还有就是，一些开发程序在Linux下的兼容性要远好于Windows,所以干脆装双系统当生产力了，然后让Win11成为 “SteamOS”。</p>
+<p><strong>此文章主要面向Y9000X安装Archlinux, 涉及到Y9000X的一些特殊适配问题，但是基本上通用。</strong><br><del>主要还是方便我下次炸了，重装系统，看看怎么适配的。</del></p>
+<p>引导U盘用的是Ventory,不再赘述。</p>
+<h2 id="基本系统安装"><a href="#基本系统安装" class="headerlink" title="基本系统安装"></a>基本系统安装</h2><p>首先，进入我们亲爱的archiso内，进行系统的初始化配置。</p>
+<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs text">步骤1 - 当我们启动电源时，BIOS（基本输入/输出系统）或UEFI（统一可扩展固件接口）固件从非易失性存储器加载，并执行POST（上电自检）。<br><br>步骤2 - BIOS/UEFI检测连接到系统的设备，包括CPU、RAM和存储。<br><br>步骤3 - 选择一个启动设备以从中引导操作系统。这可以是硬盘、网络服务器或光盘驱动器。<br><br>步骤4 - BIOS/UEFI运行引导加载程序（GRUB），该加载程序提供一个菜单，用于选择操作系统或内核功能。<br><br>步骤5 - 内核准备好后，我们现在切换到用户空间。内核启动systemd作为第一个用户空间进程，它管理进程和服务，探测所有剩余的硬件，挂载文件系统，并运行桌面环境。<br><br>步骤6 - systemd默认在系统引导时激活默认的.target单元。其他分析单元也会被执行。<br><br>步骤7 - 系统运行一系列启动脚本并配置环境。<br><br>步骤8 - 用户被呈现出登录窗口。系统现在已经准备就绪。<br><br>内容转自知乎，找不到原文链接了，十分抱歉。<br></code></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/linux-boot-animation.webp"
+                      alt="Linux-boot-animation"
+                ></p>
+<p>从上述说明我们可以得出，由于BIOS&#x2F;UEFI等是已经完备的，我们只需要提供bootloader、OS系统内核入口即可。</p>
+<p>综上所述，我们安装系统所做的任务实际上只是制作一个bootloader及OS系统内核入口。</p>
+<h3 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h3><p>一切的一切追究还是存储在磁盘上，我们需要先从磁盘的分区开始操作。没有磁盘操作，我们无法存储重要的bootloader和内核文件。</p>
+<p>这里我比较喜欢的工具是 cfdisk。</p>
+<ol>
+<li>通过 <code>lsblk</code> 查看磁盘情况</li>
+</ol>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">❯ lsblk<br>NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS<br>nvme0n1     259:0    0 476.9G  0 disk <br>├─nvme0n1p1 259:1    0   260M  0 part <br>├─nvme0n1p2 259:2    0    16M  0 part <br>├─nvme0n1p3 259:3    0   200G  0 part <br>├─nvme0n1p4 259:4    0 274.7G  0 part <br>└─nvme0n1p5 259:5    0     2G  0 part <br>nvme1n1     259:6    0 953.9G  0 disk <br>├─nvme1n1p1 259:7    0    16M  0 part <br>├─nvme1n1p2 259:8    0 390.7G  0 part <br>├─nvme1n1p3 259:9    0     4G  0 part<br>└─nvme1n1p4 259:10   0   559G  0 part <br></code></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>选择某一个待安装磁盘进行安装</li>
+</ol>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cfdisk /dev/nvme1n1<br></code></pre></td></tr></table></figure></div>
+
+<p>分区不需要关注在哪个盘，只需要关注能够挂载哪些分区即可。</p>
+<p>分区需求：</p>
+<ul>
+<li>boot分区 （1-2GB，无特殊需求则留一些就行，type为UFEI System）</li>
+<li>其他分区(除了根目录其他都可选)<ul>
+<li>根分区</li>
+<li>swap</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p>上述的boot分区即是bootloader的存放位置，且其中也会放入内核文件，作为os的内核加载入口；根分区则为你要存放系统文件还有用户文件的地方（可以再单独创建一个home分区）。具体不再赘述，每个人有自己的分配喜好。</p>
+<ol start="3">
+<li>分区格式化</li>
+</ol>
+<p>boot分区需要格式化为 exFAT 格式，其他的可以自行选择，我选择的是Btrfs支持快照，性能强大。</p>
+<h3 id="分区挂载"><a href="#分区挂载" class="headerlink" title="分区挂载"></a>分区挂载</h3><p>想要持久性地存储肯定是需要储存在硬盘上的，我们需要挂载上我们刚刚分配的分区，并将系统写入硬盘内。</p>
+<p>挂载不再赘述，需要注意分区的类型的影响，尤其是btrfs需要挂载子卷的情况。</p>
+<p>根分区挂载在 &#x2F;mnt，boot分区挂载在 &#x2F;mnt&#x2F;boot。</p>
+<h3 id="GRUB2的安装–安装bootloader"><a href="#GRUB2的安装–安装bootloader" class="headerlink" title="GRUB2的安装–安装bootloader"></a>GRUB2的安装–安装bootloader</h3><ol>
+<li>还是先 pacman -Syu 下（可以提前还源）；<br>可以选择先测速以下：</li>
+</ol>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">reflactor --sort rate -c China -l 200 --verbose --save /etc/pacman.d/mirrorlist<br></code></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>安装grub2到boot分区：</li>
+</ol>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grub-install --efi-directory=/mnt/boot --target=x86_64-efi --bootloader-id=想叫啥叫啥<br></code></pre></td></tr></table></figure></div>
+
+<h3 id="系统内核及相关配置"><a href="#系统内核及相关配置" class="headerlink" title="系统内核及相关配置"></a>系统内核及相关配置</h3><p>此时生成同等重要的操作系统核心文件。</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">下次联网用</span><br>pacstrap /mnt networkmanager<br><span class="hljs-meta prompt_"># </span><span class="language-bash">系统重要库</span><br>pacstrap /mnt base linux linux-firmware base-devel grub<br><span class="hljs-meta prompt_"># </span><span class="language-bash">intel微码（可选）</span><br>pacstrap /mnt intel-ucode<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">切换到 /mnt 下</span><br>arch-chroot /mnt<br><span class="hljs-meta prompt_"># </span><span class="language-bash">添加你的用户到<span class="hljs-built_in">sudo</span>(wheel)组</span><br>useradd -m -G whell xxx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">别忘了设置密码</span><br>passwd<br><span class="hljs-meta prompt_"># </span><span class="language-bash">本地化配置，这里我按照英文来，不然可能会出现中文路径等，我懒得管</span><br>vim /etc/locale.gen #取消en_US.UTF-8的注释<br>echo &#x27;LANG=en_US.UTF-8&#x27;  &gt; /etc/locale.conf<br><span class="hljs-meta prompt_">#</span><span class="language-bash">修改主机名</span><br>nano /etc/hostname<br><span class="hljs-meta prompt_">#</span><span class="language-bash">生成引导配置文件，让grub可以找到你的内核入口</span><br>grub-mkconfig -o /boot/grub/grub.cfg<br>exit<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">生成自动挂载文件</span><br>genfstab -U /mnt &gt; /mnt/etc/fstab<br></code></pre></td></tr></table></figure></div>
+
+<h2 id="桌面环境配置"><a href="#桌面环境配置" class="headerlink" title="桌面环境配置"></a>桌面环境配置</h2><p>操作完上述步骤后，就可以重启进入系统了。但是伟大的arch用户是需要自己安装桌面环境的。</p>
+<p><strong>此文章使用的是kde+wayland，环境为mux方案下的intel+nvidia混显笔记本。</strong></p>
+<p>首先，安装intel的核显驱动，我们暂且搁置傻逼nvidia驱动，把他放在兼容性问题部分介绍；</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel<br></code></pre></td></tr></table></figure></div>
+
+<p>然后，安装plasma环境;</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">pacman -Syu<br>pacman -S plasma-meta #安装完整的plasma<br>pacman -S plasma-workspace xdg-desktop-portal<br><span class="hljs-meta prompt_"># </span><span class="language-bash">N卡用户需要额外安装egl-wayland,xdg-desktop-portal包是为了如obs此类工具录制屏幕使用</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">xdg-desktop-portal包组提供了不同环境下使用的软件包</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">例如kde用户可选择xdg-desktop-portal-kde包</span><br>systemctl enable sddm<br></code></pre></td></tr></table></figure></div>
+
+<p>然后就可以进入桌面了，其他配置不再赘述。</p>
+<p><strong>需要注意的是fcitx5输入法安装后，可以从系统设置里添加激活，然后在特定文件内写入传统的输入法配置信息，这样子才能在控制台等地方调出输入法。</strong></p>
+<h2 id="Y9000X兼容性问题"><a href="#Y9000X兼容性问题" class="headerlink" title="Y9000X兼容性问题"></a>Y9000X兼容性问题</h2><h3 id="声音问题"><a href="#声音问题" class="headerlink" title="声音问题"></a>声音问题</h3><p>先安装一些声音固件相关的模块。</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo pacman -S sof-firmware alsa-firmware alsa-ucm-conf  <br></code></pre></td></tr></table></figure></div>
+
+<p>然后即使你通过alsa手动开启了扬声器，仍然会发现有声音输出但是扬声器没有声音。</p>
+<p>去Arch Forum可以看到有人发表了相关的问题，是因为Y9000X在声音输出与扬声器间有一个功放模块，这个功放模块应该是与杜比音效相关的，如果没有相关的驱动，功放模块无法运作，导致没有实际的声音输出。</p>
+<p>得益于有位老哥手动从这个功放模块的开源库做了一个dkms版的补丁，现在可以爽用了。</p>
+<p>可以使用yay一键安装这个aur包，其他方式自行搜索这个包。</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yay -S legion-y9000x-2022-iah7-sound-fix-dkms<br></code></pre></td></tr></table></figure></div>
+
+<h3 id="MUX方案支持问题（混显-独显）"><a href="#MUX方案支持问题（混显-独显）" class="headerlink" title="MUX方案支持问题（混显&#x2F;独显）"></a>MUX方案支持问题（混显&#x2F;独显）</h3><div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">驱动不再赘述，自行选择开源还是闭源的，需要注意zen等自定内核，需要使用dkms版本（一定要安装对应的headers）</span><br>yay -S optimus-manager<br></code></pre></td></tr></table></figure></div>
+
+<p>具体的情况可以看我之前的Blog,目前的问题是独显模式下，无法进入桌面吗，但是仍然可以启动其他应用程序。主要还是Optimus-Manger识别不到核显，就直接崩了。</p>
+<p>等完美解决了再续写。linux-wechat-qt</p>
+<h3 id="睡眠后-GPU进入深度睡眠状态无法唤醒"><a href="#睡眠后-GPU进入深度睡眠状态无法唤醒" class="headerlink" title="睡眠后,GPU进入深度睡眠状态无法唤醒"></a>睡眠后,GPU进入深度睡眠状态无法唤醒</h3><p>设置一定时间后进入睡眠状态,可能会导致NVIDIA GPU进入深度睡眠状态,从而无法唤醒,进入SDDM的登陆界面后,会直接卡住,也无法进入TTY,只能进行长按电源强制关机。</p>
+<p>调出系统日志后，可以看到类似这种语句：</p>
+<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">drm error failed to read dpcd register 0x60<br></code></pre></td></tr></table></figure></div>
+
+<p>这个问题在2022年已经有人讨论过了，他们给出的解决方案是去更新以下bios,最新的bios可能修复了这个问题，但是我的bios已经是最新的了。</p>
+<p>我发现，我没有在内核参数中增加 <code>ibt=off</code> 可能是这个问题。</p>
+<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">摘自Arch Wiki-Nvidia页<br><br>Note: 470xx and older drivers may not function correctly on Linux 5.18 (or later) on systems with Intel CPUs 11th Gen and newer[dead link 2024-07-30 ⓘ] due an incompatibility with Indirect Branch Tracking. You can disable it by setting the ibt=off kernel parameter from the boot loader. Be aware, this security feature is responsible for mitigating a class of exploit techniques.<br></code></pre></td></tr></table></figure></div>
+
+<h2 id="工具配置"><a href="#工具配置" class="headerlink" title="工具配置"></a>工具配置</h2><p>Office可以用LibreOffice或者去官网下载OnlyOffice的app image。OnlyOffice是只负责兼容Ubuntu的，其他系统不进行兼容配置，在arch下是无法过编译的，因为各种配置问题，所以还是老老实实app image吧。</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">clash</span><br>yay -S clash-verge-rev<br><span class="hljs-meta prompt_"># </span><span class="language-bash">备份软件</span><br>yay -S timeshift<br></code></pre></td></tr></table></figure></div>
+
+<p>其他软件不再赘述，qq用linuxqq,wechat用wechat-uos-qt。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>在这场Arch安装+完全配置竞速中，我取得了一天的好成绩。</p>
+<p>一次grub install后忘记grub-mkconfig了，一次忘记mount boot了，一次忘记下载联网工具了，一次忘记设置用户密码了。</p>
+<p>我是Arch低手😭😭😭。</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 为Y9000X安装Arch</li>
+        <li><strong>作者:</strong> xiue233</li>
+        <li><strong>创建于
+                :</strong> 2024-08-02 10:02:14</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2025-03-16 21:27:42
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://xiue233.github.io/2024/08/02/arch-install-for-Y9000X-2022/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Linux/">#Linux</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Arch/">#Arch</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2024/08/04/conda-openssl-legacy-provider/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Linux下Conda遇到OpenSSL 3.0 Legacy错误</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2024/07/13/2024-7-13-essay/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">《心中的雨，散落在了天边》(2024-7-13随笔)</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">为Y9000X安装Arch</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-text">基本系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="nav-text">磁盘分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%E6%8C%82%E8%BD%BD"><span class="nav-text">分区挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GRUB2%E7%9A%84%E5%AE%89%E8%A3%85%E2%80%93%E5%AE%89%E8%A3%85bootloader"><span class="nav-text">GRUB2的安装–安装bootloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="nav-text">系统内核及相关配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">桌面环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Y9000X%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-text">Y9000X兼容性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3%E9%97%AE%E9%A2%98"><span class="nav-text">声音问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MUX%E6%96%B9%E6%A1%88%E6%94%AF%E6%8C%81%E9%97%AE%E9%A2%98%EF%BC%88%E6%B7%B7%E6%98%BE-%E7%8B%AC%E6%98%BE%EF%BC%89"><span class="nav-text">MUX方案支持问题（混显&#x2F;独显）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9D%A1%E7%9C%A0%E5%90%8E-GPU%E8%BF%9B%E5%85%A5%E6%B7%B1%E5%BA%A6%E7%9D%A1%E7%9C%A0%E7%8A%B6%E6%80%81%E6%97%A0%E6%B3%95%E5%94%A4%E9%86%92"><span class="nav-text">睡眠后,GPU进入深度睡眠状态无法唤醒</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="nav-text">工具配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">xiue233</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 16 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>
