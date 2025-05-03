@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://xiue233.github.io/2023/10/19/essay-genshin-phenomena-in-society/"/>
+    <link rel="canonical" href="https://xiue233.github.io/2025/04/11/deep-thought-of-rag/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -23,16 +23,18 @@
         
         <meta name="description" content="Love code, anime and u.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随笔——中国当今社会下的原神社会现象">
-<meta property="og:url" content="https://xiue233.github.io/2023/10/19/essay-genshin-phenomena-in-society/index.html">
+<meta property="og:title" content="关于RAG的深度思考">
+<meta property="og:url" content="https://xiue233.github.io/2025/04/11/deep-thought-of-rag/index.html">
 <meta property="og:site_name" content="Xiue&#39;s Blog">
 <meta property="og:description" content="Love code, anime and u.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xiue233.github.io/images/wallpaper.png">
-<meta property="article:published_time" content="2023-10-19T09:17:38.000Z">
-<meta property="article:modified_time" content="2025-03-16T13:27:42.962Z">
+<meta property="article:published_time" content="2025-04-11T14:30:40.000Z">
+<meta property="article:modified_time" content="2025-05-03T14:46:38.488Z">
 <meta property="article:author" content="Xiue">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="Agent">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xiue233.github.io/images/wallpaper.png">
     
@@ -56,7 +58,7 @@
     
     <title>
         
-            随笔——中国当今社会下的原神社会现象 | Xiue233&#39;s Blog
+            关于RAG的深度思考 | Xiue233&#39;s Blog
         
     </title>
 
@@ -288,7 +290,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">随笔——中国当今社会下的原神社会现象</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">关于RAG的深度思考</h1>
 			</div>
 			
 		</div>
@@ -309,15 +311,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-10-19 17:17:38</span>
-        <span class="mobile">2023-10-19 17:17:38</span>
+        <span class="desktop">2025-04-11 22:30:40</span>
+        <span class="mobile">2025-04-11 22:30:40</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-16 21:27:42</span>
-            <span class="mobile">2025-03-16 21:27:42</span>
+            <span class="desktop">2025-05-03 22:46:38</span>
+            <span class="mobile">2025-05-03 22:46:38</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -329,7 +331,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>&nbsp;
+                        <a href="/tags/LLM/">LLM</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/RAG/">RAG</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Agent/">Agent</a>&nbsp;
                     </li>
                 
             </ul>
@@ -355,27 +365,80 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<blockquote>
-<p>“不是因为‘他’玩原神，只是因为他‘玩原神’。”</p>
+			<p>本文从RAG的定义、价值、实现多维度分析思考，主要面向于基于切块的RAG方案，对于知识图谱、知识超图这种立体化知识结构，本文做不过分讲解。</p>
+<p>由于比较懒，有空就会不断完善后面的敷衍内容。每每写文章，本有长篇大论，但是写着写着觉得好像也没必要（<del>应该不是懒了</del>），于是就小几千字，从未过多。（<del>下次拿代码占字数</del>）</p>
+<h2 id="本文思路"><a href="#本文思路" class="headerlink" title="本文思路"></a>本文思路</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/deep-thought-of-rag.png"
+                      alt="deep-thought-of-rag"
+                ></p>
+<h2 id="RAG是什么？"><a href="#RAG是什么？" class="headerlink" title="RAG是什么？"></a>RAG是什么？</h2><p>少讲定义。</p>
+<p>检索增强生成（RAG）就是在大模型解决问题时，帮它检索出可能需要用的到信息，然后让大模型可以更好的思考与解决问题。</p>
+<h2 id="为什么需要RAG？"><a href="#为什么需要RAG？" class="headerlink" title="为什么需要RAG？"></a>为什么需要RAG？</h2><p>大语言模型无法快速地进行模型迭代，导致无法及时、动态地学习知识。</p>
+<h3 id="小故事例子"><a href="#小故事例子" class="headerlink" title="小故事例子"></a>小故事例子</h3><p>存在一个巨无霸公司，这个公司内部每天都在产生上百篇文档，为了方便公司内部员工的阅读，老板基于原来的上万篇文档微调了一个大模型，然而如果对后续的文档继续微调的话无法满足该公司文档的每天海量更新，周期长、成本高。</p>
+<p>某一天，这个公司里的小李发现，直接把一篇较短的文章发送给大模型聊天助手，它是可以根据对话上下文进行文章的解读工作的，即，可以认为大模型对上下文内的内容有一定的记忆、学习与理解能力。</p>
+<p>于是小李心想，把所有文档投在大模型的上下文里不就用不着微调了吗？但是很快他发现大模型的上下文是有限地，一般来说投入几十万字的文档它就无法学习了！这怎么办呢？</p>
+<p>于是他想了个妙招，既然大模型的能学习上下文记忆但<strong>上下文是有限</strong>的，那他每次放一部分与想问的问题相关的文档不就可以了吗？本质上公司就是希望使用大模型来解决文档臭长臭长，没人愿意读的问题。</p>
+<p>在尝试后，他通过编排把文档按照业务场景分类标注，比如在问服务器问题时，他就会选择几篇自己觉得最靠谱、最相关的文档投给大模型，然后再咨询大模型自己的问题，让大模型学习文档内容来协助解决问题。</p>
+<p>过了一段时间，他发现这个方法确实有效，然而，人哪有这么多功夫去整理文档呢？更何况问的时候还要去动脑子找哪些文档是相关的！人能懒着，为什么要动脑子？不行，小李觉得自己就是为了偷懒才要用大模型，结果还要伺候它，给它找文档！天理难容。</p>
+<p>小李趁着摸鱼的时间，发现传统的自然语言处理领域有一种把文本转化为向量的方法，通过一个AI模型把文本转化为与其语义对应的向量数据，就可以通过传统矩阵计算的方式，判断文本之间是否语义有关联度。</p>
+<p>顺势一想，不难想到，直接把所有文档都向量化，然后存在一个可以存储和检索向量的数据库里，在问大模型问题时，就可以由程序来通过向量计算判断每一个文档与用户问题的<strong>关联度</strong>，进而检索到高关联度的文档给大模型学习。</p>
+<p>好方法！但是很快小李发现<code>Text Embedding Model</code>（即上文提到的文本向量化模型）的上下文也是有限的，这就让整篇文档无法直接被向量化。小李干脆就按照段落切割文档，分为一个个文档块，然后向量化，并存储在向量数据库里。</p>
+<p>他又写了一套程序，可以让用户输入问题，然后自动向量化并检索到最相关的二十个文档块，然后把问题和文档块都给大模型，由大模型来解读。</p>
+<p>这一套程序一经在公司内部公开，就广受好评，很快小李在技术部门连升三级。</p>
+<h3 id="RAG解决了什么问题？为什么能解决？"><a href="#RAG解决了什么问题？为什么能解决？" class="headerlink" title="RAG解决了什么问题？为什么能解决？"></a>RAG解决了什么问题？为什么能解决？</h3><p>通过小李的例子，可以看到RAG就是为了解决（改善）大模型知识的低成本、动态学习问题。</p>
+<p>RAG的基础能力条件：</p>
+<ul>
+<li>知识学习：大模型能根据上下文记忆进行一定程度上的学习与理解</li>
+<li>知识检索：文本可以被转为语义相关的向量，进而让机器可以快速进行基于语义相关度的文本检索</li>
+<li>知识存储：人类的文档虽然很长，但是存在段落等特征，可以被切分为一块块的基础知识块，进而进行向量化并存储在向量数据库</li>
+</ul>
+<p>实际上就和人一样，要在淘宝当客服，你得有脑子（生物意义上，不是骂人啊），至少可以理解文档写的啥、能通过电脑找到你觉得语义上相关的文档。至于知识存储，自有运营在电脑上放相关文档文件，并用文件夹分类方便客服来查找。</p>
+<h2 id="常见的RAG实现方式"><a href="#常见的RAG实现方式" class="headerlink" title="常见的RAG实现方式"></a>常见的RAG实现方式</h2><p>见参考资料，不再复制粘贴，赘述不已。</p>
+<h2 id="求同存异：不同RAG的设计逻辑"><a href="#求同存异：不同RAG的设计逻辑" class="headerlink" title="求同存异：不同RAG的设计逻辑"></a>求同存异：不同RAG的设计逻辑</h2><h3 id="知识存在的特征"><a href="#知识存在的特征" class="headerlink" title="知识存在的特征"></a>知识存在的特征</h3><p>不同RAG的实现逻辑差别之一是，针对知识切块的角度不一样。</p>
+<blockquote>
+<p>人亦云：“改编不是乱编，戏说不是胡说。”</p>
 </blockquote>
-<p><del>原来，你也玩原神！</del></p>
-<p>作为一款“潮流游戏”，原神可谓是人尽皆知，在简中网络的抽象环境下，为什么原神脱颖而出，OP成为某一抽象形象的代言词？</p>
-<h2 id="它是什么？"><a href="#它是什么？" class="headerlink" title="它是什么？"></a>它是什么？</h2><p>你说得对，但是原神(Genshin Impact)是米哈游….(省略一万字)</p>
-<h2 id="OP从哪里来？"><a href="#OP从哪里来？" class="headerlink" title="OP从哪里来？"></a>OP从哪里来？</h2><p><del>妈妈生的</del></p>
-<p>简中抽象的环境下，主要起因于过于逆天的原神用户，让其他人感觉到不适。</p>
-<p>之后，用于群体攻击，造成AOE伤害。</p>
-<p>在情绪挤压下，简中互联网环境存在很多情绪释放地，简称“厕所”，人有三急，该拉憋不住。</p>
-<p>目前，OP也是特殊的街头厕所，可以不动脑子、不具有负罪感地进行排泄，从而缓解三急。</p>
-<h2 id="OP一词向什么地方发展？"><a href="#OP一词向什么地方发展？" class="headerlink" title="OP一词向什么地方发展？"></a>OP一词向什么地方发展？</h2><p>由前两条可以看出，OP形成历程是：</p>
-<p>一部分惹人厌的人 –&gt; 舆论发酵 –&gt; 上升至某一个群体 –&gt; 再次发酵，逐渐腌入味 –&gt; 刻板印象+MAX –&gt; …(循环)</p>
-<p>既然，大家都需要上厕所，街头一个OP厕所可能不够用吗，那么就需要建立新的厕所。</p>
-<p>新的厕所从哪里来？从之前的、现在的、未来可能的刻板印象中来，并且需要什么条件？刻板印象、用户群体发言权弱、无从争辩、选择上升的群体适当。</p>
-<p>按照这个标准，人们上厕所才会上的大方、上的尽兴、上的爽快。</p>
-<p>进而，大家接受街头上厕所后，便可能改变排泄这一行为，从生活所迫，变为娱乐所需。即，需要找任何理由去进行之间的攻击，不然无从释放在经济发展与身心发展不匹配的社会下的情绪积累。</p>
-<p>综上，OP将不再只是OP，而是人人皆是OP，只需要上述条件，即可街头尽是厕所。当所有人都裸奔的时候，便不必在意衣着得体。</p>
-<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>人人尽笑OP，人人尽是OP。</p>
-<p>在抽象互联网时代，大部分人并不会分析好坏，只要来排泄的人多了，遍地尽是厕所。OP并不是一个人人格的浓缩，而是某一恶意人群某一行为在同群体下其他人身上的稀释。被沾染上排泄味道，或者，认为某处是有、应该有厕所的味道，那么他即是厕所，随着看客的增多，它也确实变成了厕所。</p>
-<p>“不是因为‘他’玩原神，只是因为他‘玩原神’。”</p>
+<p>由人之云可知，文档切块是让你尽可能完整文章原意地切块，而不是让你切块之后成和打碎的糖果一样，碎成渣了，不知本来长啥样。</p>
+<p>因此，我们常说要根据语义来切块，要根据文档的内容结构来切块。本质上，是要分筋错骨，顺着知识的体系切块，就像顺着肉的筋脉切肉，才能少费功夫且保证肉是完整有口感的。</p>
+<p>举点例子：</p>
+<ul>
+<li>Markdown格式文档的切分要以各级标题为结构，按照各级标题划分的结构来切块</li>
+<li>有目录的文档也同理，按照目录来切块</li>
+<li>…</li>
+</ul>
+<p>哎，其实可以发现，如果说程序是数据结构+算法，那么知识就像是知识结构+内容。我们要顺着知识的筋脉（目录）走，按照筋脉（目录）来切分知识文档内容。</p>
+<p>因为，从宏观语义上来看，大部分目录会把两个联系不紧密的内容分隔开，这也是我们这么切的原因之一。其他原因还请读者在实践中逐步体验，笔者目前经验不足，难以形成准确的语言描述。</p>
+<h3 id="知识的检索形式"><a href="#知识的检索形式" class="headerlink" title="知识的检索形式"></a>知识的检索形式</h3><p>不同RAG的实现逻辑差别之二是，针对知识检索的角度不一样。</p>
+<p>同知识的特征，不同形式的知识，在存储上也有不同的存储方式考量。</p>
+<p>举点例子：</p>
+<ul>
+<li>Markdown、有目录的文档，因为有结构化的内容，可以通过<code>标题+内容</code>的形式检索，当然也可以先通过目录来定位块大致位置，再语义检索</li>
+<li>无目录的文档，直接通过语义检索；或者，既然你没显式的结构，那就从知识实体和知识联系的角度，把你切碎，在拼接为知识图谱，按照图的形式进行检索</li>
+<li>…</li>
+</ul>
+<p>检索形式的不同是针对知识结构的形式和存储方式不同，设计出更高性能、更高准确率的检索方式。</p>
+<h2 id="思考：RAG的底层原理与逻辑"><a href="#思考：RAG的底层原理与逻辑" class="headerlink" title="思考：RAG的底层原理与逻辑"></a>思考：RAG的底层原理与逻辑</h2><p>对知识的切分和检索，是试图把知识最小原子化（语义不能变），以积极适应大模型上下文学习量有限的问题。</p>
+<h2 id="工程中对RAG合理应用的思考"><a href="#工程中对RAG合理应用的思考" class="headerlink" title="工程中对RAG合理应用的思考"></a>工程中对RAG合理应用的思考</h2><p>想一想RAG到底是个啥？文本检索方案？大模型的知识库？大模型的长期记忆检索方案？</p>
+<p>从RAG的特征出发，该怎么在工程中合理应用，该应用在工程的哪里？</p>
+<h3 id="RAG架构的选择：后宫三千，仅取何人？"><a href="#RAG架构的选择：后宫三千，仅取何人？" class="headerlink" title="RAG架构的选择：后宫三千，仅取何人？"></a>RAG架构的选择：后宫三千，仅取何人？</h3><p>根据文档的内容结构形式和业务场景需要的准确率来选择。</p>
+<h3 id="工期与结果：准确率要多高才是高？"><a href="#工期与结果：准确率要多高才是高？" class="headerlink" title="工期与结果：准确率要多高才是高？"></a>工期与结果：准确率要多高才是高？</h3><p>俗话说：“RAG做Demo一周，上线调优一年。”</p>
+<p>不要想着一口气吃个胖子，根据业务场景先确定一个最低的准确率，然后不断根据新增知识的形式调整即可。</p>
+<p>大部分需求没那么高的准确率要求，同时准确率越高，提升1%所需的成本会急剧增加，此时与其考虑准确率不如思考如何从交互或者提示词上优化，让用户体验更好一些。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/708049545" >RAG的底层原理<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1893754871691326986" >18种RAG技术的优缺点解析<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/717985736" >RAG系统的性能评测方式<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/17693009207" >Agentic RAG (让大模型也参与分块等逻辑)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.aneasystone.com/archives/2024/06/advanced-rag-notes.html" >高级 RAG 技术学习笔记<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1742013004" >一文详谈19种RAG架构<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://docs.llamaindex.ai/en/stable/examples/query_transformations/query_transform_cookbook/#query-rewriting-custom" >query-rewriting-custom(如何重写为更好的查询语句)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/langchain-ai/rag-from-scratch" >GitHub Project: rag-from-scratch<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/NirDiamant/RAG_Techniques" >GitHub Project: RAG_Techniques<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/688980729" >常见的分块方法<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/n4NwgDz8TfaO-V16ww4Z9w" >针对不同格式的文档怎么分块好<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ul>
 
 		</div>
 
@@ -383,18 +446,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 随笔——中国当今社会下的原神社会现象</li>
+        <li><strong>标题:</strong> 关于RAG的深度思考</li>
         <li><strong>作者:</strong> xiue233</li>
         <li><strong>创建于
-                :</strong> 2023-10-19 17:17:38</li>
+                :</strong> 2025-04-11 22:30:40</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-03-16 21:27:42
+                    :</strong> 2025-05-03 22:46:38
             </li>
         
         <li>
-            <strong>链接:</strong> https://xiue233.github.io/2023/10/19/essay-genshin-phenomena-in-society/
+            <strong>链接:</strong> https://xiue233.github.io/2025/04/11/deep-thought-of-rag/
         </li>
         <li>
             <strong>
@@ -416,7 +479,15 @@
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/%E9%9A%8F%E7%AC%94/">#随笔</a>&nbsp;
+				<a href="/tags/LLM/">#LLM</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/RAG/">#RAG</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Agent/">#Agent</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -427,23 +498,11 @@
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2024/03/01/a-penny-economics/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">一分钱经济学(胡言乱语)</span>
-						<span class="post-nav-item">上一篇</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2023/09/13/pc-engine-in-huawei-matepad/">
+				<a class="next" rel="next" href="/2025/03/30/sakura-see-u-again/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">平板PC引擎的研究(华为MatePad)#已咕咕咕</span>
+						<span class="post-nav-title-item">樱花，再次见到你</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -518,8 +577,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">随笔——中国当今社会下的原神社会现象</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%83%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">它是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OP%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5%EF%BC%9F"><span class="nav-text">OP从哪里来？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OP%E4%B8%80%E8%AF%8D%E5%90%91%E4%BB%80%E4%B9%88%E5%9C%B0%E6%96%B9%E5%8F%91%E5%B1%95%EF%BC%9F"><span class="nav-text">OP一词向什么地方发展？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述</span></a></li></ol>
+		<div class="page-title">关于RAG的深度思考</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E6%80%9D%E8%B7%AF"><span class="nav-text">本文思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAG%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">RAG是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81RAG%EF%BC%9F"><span class="nav-text">为什么需要RAG？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%95%85%E4%BA%8B%E4%BE%8B%E5%AD%90"><span class="nav-text">小故事例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAG%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">RAG解决了什么问题？为什么能解决？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84RAG%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-text">常见的RAG实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E5%90%8C%E5%AD%98%E5%BC%82%EF%BC%9A%E4%B8%8D%E5%90%8CRAG%E7%9A%84%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91"><span class="nav-text">求同存异：不同RAG的设计逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%AD%98%E5%9C%A8%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-text">知识存在的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%9A%84%E6%A3%80%E7%B4%A2%E5%BD%A2%E5%BC%8F"><span class="nav-text">知识的检索形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%80%83%EF%BC%9ARAG%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%B8%8E%E9%80%BB%E8%BE%91"><span class="nav-text">思考：RAG的底层原理与逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E4%B8%AD%E5%AF%B9RAG%E5%90%88%E7%90%86%E5%BA%94%E7%94%A8%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-text">工程中对RAG合理应用的思考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAG%E6%9E%B6%E6%9E%84%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%9A%E5%90%8E%E5%AE%AB%E4%B8%89%E5%8D%83%EF%BC%8C%E4%BB%85%E5%8F%96%E4%BD%95%E4%BA%BA%EF%BC%9F"><span class="nav-text">RAG架构的选择：后宫三千，仅取何人？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E6%9C%9F%E4%B8%8E%E7%BB%93%E6%9E%9C%EF%BC%9A%E5%87%86%E7%A1%AE%E7%8E%87%E8%A6%81%E5%A4%9A%E9%AB%98%E6%89%8D%E6%98%AF%E9%AB%98%EF%BC%9F"><span class="nav-text">工期与结果：准确率要多高才是高？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol>
 
 	</div>
 </div>
